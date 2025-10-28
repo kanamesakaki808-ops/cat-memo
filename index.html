@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>すずちゃんのにゃんメモ</title>
+<style>
+  body { font-family: sans-serif; background: #fffbe6; padding: 20px; }
+  h1 { color: #ff6600; }
+  #memoList { margin-top: 20px; }
+  .memoItem { background: #fff0cc; padding: 10px; margin-bottom: 10px; border-radius: 5px; display: flex; justify-content: space-between; align-items: center; }
+  button { padding: 5px 10px; background: #ff9933; border: none; border-radius: 5px; cursor: pointer; color: white; }
+  button:hover { background: #ffb84d; }
+</style>
+</head>
+<body>
+
+<h1>すずちゃんのにゃんメモ</h1>
+<input type="text" id="memoInput" placeholder="メモを書いてね">
+<button onclick="addMemo()">にゃん！追加</button>
+
+<div id="memoList"></div>
+
+<script>
+function addMemo() {
+  const input = document.getElementById('memoInput');
+  const text = input.value.trim();
+  if (text === "") return;
+
+  const div = document.createElement('div');
+  div.className = 'memoItem';
+
+  const span = document.createElement('span');
+  span.textContent = "😺 " + text;
+
+  const delBtn = document.createElement('button');
+  delBtn.textContent = "にゃん！削除";
+  delBtn.onclick = () => div.remove();
+
+  div.appendChild(span);
+  div.appendChild(delBtn);
+
+  document.getElementById('memoList').appendChild(div);
+  input.value = "";
+}
+</script>
+
+</body>
+</html>
